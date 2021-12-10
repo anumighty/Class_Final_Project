@@ -15,10 +15,10 @@ The data size is about 17GB and can be found <a href="https://userinterfaces.aal
 # Project Details
 The raw dataset folder consist of 168,593 text files (excluding the participants metadata and readme text files) where each text file represent the keystrokes data of the participant. Each text file has about 600 to 800 rows and the dataset has a total of 136 million rows of data. The Figure 1 below shows the dataset folder and Figure 2 shows the keystrokes data for participant 5.
 
-![keystrokes_dataset](keystroke_dataset.JPG)
+![keystrokes_dataset](Images/keystroke_dataset.JPG)
 Figure 1: Keystrokes dataset folder.
 
-![keystrokes](keystrokes.JPG)
+![keystrokes](Images/keystrokes.JPG)
 Figure 2: Opening the "5_keystrokes.txt".
 
 The dataset column headers are:
@@ -40,10 +40,10 @@ The dataset column headers are:
 Recall that each participant had typed 15 sentences. So, I calculated the Word per Minute (WPM) for each of the 15 sentences and then calculated the average WPM. I also recorded the total number of corrected and uncorrected errors/mistakes per sentence per participant.
 
 Below is the formular used in calculating the Net WPM and the Gross WPM.
-![net_wpm](net_wpm.jpg)
+![net_wpm](Images/net_wpm.jpg)
 Equation 1: Net WPM formula.
 
-![gross_wpm](gross_wpm.png)
+![gross_wpm](Images/gross_wpm.png)
 Equation 2: Gross WPM formula.
 
 When typing speed is calculated, a word that contains five characters, such as “I love my computer, don’t you?” would be counted as 6 words, not just 5, for example, (30 characters / 5). Functional keys such as backspace or shift keys are not counted, but all other characters are counted, including spaces, letters, numbers, and punctuation.
@@ -85,33 +85,33 @@ summary.append((id,sum(all_corr_errs),sum(all_uncorr_errs),
 ```
 For ease of analysis and interpretation, below are the frequency distribution plot of the average WPM and average accuracy.
 
-![avg_wpm](avg_wpm.png)
+![avg_wpm](Images/avg_wpm.png)
 Figure 3: Frequency distribution plot of the average WPM.
 
-![avg_acc](avg_acc.png)
+![avg_acc](Images/avg_acc.png)
 Figure 4: Frequency distribution plot of the average accuracy.
 
-![speed_dist](speed_table.png)
+![speed_dist](Images/speed_table.png)
 Figure 5: Frequency distribution table for both WPM and accuracy.
 
 Figure 3 shows that participants' typing speed follows normal distribution. Figure 4 shows that most (129,534) of the particpants have perfect accuracy (100%) with no corrected or uncorrected error, and a little above 35,000 participants have 90% typing accuracy. The two figues (Figure 3 and 4) shows that typing accuracy and typing speed can be disjoint. That is, it is possible to type with high accuracy (little or no mistakes) and have slow typing speed.
 Also, as recorded in Figure 5, there are 5 particpants with more than 200 WPM. This shows that there could be some inaccuracies with those participamnts' data as the maximum WPM ever recorded is 216. I looked up those participants and their participants IDs are `123625, 27932, 316206, 370956, 515892`. Upon further investigation on those participants, I found that a very high net WPM was found in one of the rows in the `wahab_keystrokes` table for each of the participants (see Figure 6 for example). I then looked up those participants raw data and found that the keyrelease timestamp for the sentence with super high WPM was wrong (see Figure 7). I then went ahead to fix that by using the keypress timestamp instead.
 
-![issue2](issue2.png)
+![issue2](Images/issue2.png)
 Figure 6: Super high WPM for particpant 27932.
 
 <br>
 
-![issue1](issue1.JPG)
+![issue1](Images/issue1.JPG)
 Figure 7: Image of the raw data showing that the last character of the sentence had a wrong/inconsistent keyrelease timestamp.
 
 As shown in Figure 8 below, those 5 participants with inaccurate data have now been fixed. Emphasis on the highlighted part. Figure 9 shows the new (fixed) WPM and accuracy distribution tables.
 
-![avg_wpm_fixed](fixed.JPG)
+![avg_wpm_fixed](Images/fixed.JPG)
 Figure 8: Screenshot from the database with all 5 participants WPM fixed and now accurate.
 
 
-![speed_dist_fixed](speed_table2.png)
+![speed_dist_fixed](Images/speed_table2.png)
 Figure 9: Updated WPM and Accuracy distribution.
 
 
@@ -130,10 +130,10 @@ Using the result above, typing speeds are grouped as follows:
 
 Figure 10 shows the frequency distribution of the typing speed grouping. As seen, most of the participants (about 68%) fall within the below average and average typing group and about 22% fall in the fluent group. Figure 11 is the distribution table. The figure and table were made with Excel from the CSV file that was outputted from the MYSQL database.
 
-![group](group.png)
+![group](Images/group.png)
 Figure 10: Typing speed grouping.
 
-![group_dist](group_table.png)
+![group_dist](Images/group_table.png)
 Figure 11: Typing speed grouping table.
 
 
@@ -166,5 +166,5 @@ if digraph_time > slowest_digraph_time:
 
 The Figure below (Figure 12) is a table that shows a snippet of the overall fastest and slowest digraphs for each user.
 
-![fast_slow](fast_slow.png)
+![fast_slow](Images/fast_slow.png)
 Figure 12: Screenshot from the database showing the overall slowest and fastest digraphs typed by each of the participants.
